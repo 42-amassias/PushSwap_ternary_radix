@@ -13,7 +13,7 @@ class PushSwap(Generic[T]):
 
 	def	__str__(self) -> str:
 		def	stack_to_str(name : str, stack: deque[T]) -> str:
-			s = str(stack)[7:-2]
+			s = ' '.join(map(str, stack))
 			return (name + ": " + (s if s else "Empty"))
 
 		a = stack_to_str("a", self.__a)
