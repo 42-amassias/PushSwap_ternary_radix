@@ -18,14 +18,49 @@ class Ternary:
 
 	def	__int__(self) -> int:
 		return (self.__value)
-	
-	def	__eq__(self, o : int) -> bool:
+
+	def	__eq__(self, o) -> bool:
+		if type(o) is Ternary:
+			o = int(o)
 		if type(o) is int:
 			return (self.__value == o)
-		if type(o) is Ternary:
-			return (self.__value == int(o))
 		return (False)
-	
+
+	def	__ne__(self, o) -> bool:
+		if type(o) is Ternary:
+			o = int(o)
+		if type(o) is int:
+			return (self.__value != o)
+		return (False)
+
+	def	__lt__(self, o) -> bool:
+		if type(o) is Ternary:
+			o = int(o)
+		if type(o) is int:
+			return (self.__value < o)
+		return (False)
+
+	def	__gt__(self, o) -> bool:
+		if type(o) is Ternary:
+			o = int(o)
+		if type(o) is int:
+			return (self.__value > o)
+		return (False)
+
+	def	__le__(self, o) -> bool:
+		if type(o) is Ternary:
+			o = int(o)
+		if type(o) is int:
+			return (self.__value <= o)
+		return (False)
+
+	def	__ge__(self, o) -> bool:
+		if type(o) is Ternary:
+			o = int(o)
+		if type(o) is int:
+			return (self.__value >= o)
+		return (False)
+
 	def	__hash__(self):
 		return (self.__value.__hash__())
 
@@ -34,8 +69,9 @@ class Ternary:
 			length = decompose(n // 3) if n >= 3 else 0
 			self.__digits.append(n % 3)
 			return (length + 1)
+
 		self.__digit_count = decompose(self.__value)
 		self.__digits.reverse()
-	
+
 	def	digit_count(self) -> int:
 		return (self.__digit_count)
