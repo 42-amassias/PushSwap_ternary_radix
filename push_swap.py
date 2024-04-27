@@ -1,5 +1,6 @@
 from typing import Generic, TypeVar
 from collections import deque
+import utils
 
 T = TypeVar("T")
 
@@ -10,6 +11,7 @@ class PushSwap(Generic[T]):
 	def	__init__(self, initial_config: list[T]):
 		self.__a = deque(initial_config)
 		self.__b = deque()
+		self.__normalize()
 
 	def	__str__(self) -> str:
 		def	stack_to_str(name : str, stack: deque[T]) -> str:
@@ -19,6 +21,9 @@ class PushSwap(Generic[T]):
 		a = stack_to_str("a", self.__a)
 		b = stack_to_str("b", self.__b)
 		return (a + "\n" + b)
+
+	def	__normalize(self) -> None:
+		self.__a = deque(map(utils.fst, sorted(enumerate(map(utils.fst, sorted(enumerate(self.__a), key=utils.snd))), key=utils.snd)))
 
 	def	__push(self, dest: deque[T], src: deque[T]) -> bool:
 		if not src:
@@ -92,3 +97,9 @@ class PushSwap(Generic[T]):
 
 	def	peek_b(self) -> T | None:
 		return (self.__peek(self.__b))
+
+	def	get_a(self) -> list[T]:
+		return (list(self.__a))
+	
+	def	get_b(self) -> list[T]:
+		return (list(self.__b))
