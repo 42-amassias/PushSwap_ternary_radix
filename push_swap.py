@@ -8,9 +8,13 @@ class PushSwap(Generic[T]):
 	__a: deque[T]
 	__b: deque[T]
 	__element_count: int
+	__a_length: int
+	__b_length: int
 
 	def	__init__(self, initial_config: list[T]):
 		self.__element_count = len(initial_config)
+		self.__a_length = self.__element_count
+		self.__b_length = 0
 		self.__a = deque(initial_config)
 		self.__b = deque()
 		self.__normalize()
@@ -67,10 +71,14 @@ class PushSwap(Generic[T]):
 
 	def	pa(self) -> None:
 		if self.__push(self.__a, self.__b):
+			self.__a_length = self.__a_length + 1
+			self.__b_length = self.__b_length - 1
 			print("pa")
 
 	def	pb(self) -> None:
 		if self.__push(self.__b, self.__a):
+			self.__a_length = self.__a_length - 1
+			self.__b_length = self.__b_length + 1
 			print("pb")
 	
 	def	sa(self) -> None:
@@ -108,6 +116,12 @@ class PushSwap(Generic[T]):
 
 	def	get_b(self) -> list[T]:
 		return (list(self.__b))
+
+	def	get_a_len(self) -> int:
+		return (self.__a_length)
+
+	def	get_b_len(self) -> int:
+		return (self.__b_length)
 
 	def	get_element_count(self) -> int:
 		return (len(self))
