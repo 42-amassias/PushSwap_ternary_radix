@@ -7,8 +7,10 @@ T = TypeVar("T")
 class PushSwap(Generic[T]):
 	__a: deque[T]
 	__b: deque[T]
+	__element_count: int
 
 	def	__init__(self, initial_config: list[T]):
+		self.__element_count = len(initial_config)
 		self.__a = deque(initial_config)
 		self.__b = deque()
 		self.__normalize()
@@ -21,6 +23,9 @@ class PushSwap(Generic[T]):
 		a = stack_to_str("a", self.__a)
 		b = stack_to_str("b", self.__b)
 		return (a + "\n" + b)
+
+	def	__len__(self) -> int:
+		return (self.__element_count)
 
 	def	__normalize(self) -> None:
 		self.__a = deque(map(utils.fst, sorted(enumerate(map(utils.fst, sorted(enumerate(self.__a), key=utils.snd))), key=utils.snd)))
@@ -100,6 +105,9 @@ class PushSwap(Generic[T]):
 
 	def	get_a(self) -> list[T]:
 		return (list(self.__a))
-	
+
 	def	get_b(self) -> list[T]:
 		return (list(self.__b))
+
+	def	get_element_count(self) -> int:
+		return (len(self))
