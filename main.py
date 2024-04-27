@@ -7,7 +7,7 @@ from ternary import Ternary
 from binary_radix import binary_radix
 
 USE_ARGV = False
-DEFAULT_VALUES = list(map(Ternary, [ 1, 3, 2 ]))
+DEFAULT_VALUES = list(map(Ternary, [ 8, 4, 3, 6, 1, 2, 0, 7, 5  ]))
 
 def	argv_to_values(argv: list[str]) -> list[Ternary]:
 	return (list(map(Ternary, sum(map(str.split, argv[1:]), []))))
@@ -26,5 +26,8 @@ if __name__ == "__main__":
 	values = argv_to_values(sys.argv) if USE_ARGV else DEFAULT_VALUES
 	if not check_values(values):
 		exit(1)
+	if values == sorted(values):
+		exit(0)
 	ctx = PushSwap[Ternary](values)
+	binary_radix(ctx)
 	print(ctx)
