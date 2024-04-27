@@ -4,8 +4,10 @@ import sys
 from push_swap import PushSwap
 from ternary import Ternary
 
+from binary_radix import binary_radix
+
 USE_ARGV = False
-DEFAULT_VALUES = list(map(Ternary, [ 1, 2, 3 ]))
+DEFAULT_VALUES = list(map(Ternary, [ 1, 3, 2 ]))
 
 def	argv_to_values(argv: list[str]) -> list[Ternary]:
 	return (list(map(Ternary, sum(map(str.split, argv[1:]), []))))
@@ -24,5 +26,5 @@ if __name__ == "__main__":
 	values = argv_to_values(sys.argv) if USE_ARGV else DEFAULT_VALUES
 	if not check_values(values):
 		exit(1)
-	ps = PushSwap[Ternary](values)
-	print(ps)
+	ctx = PushSwap[Ternary](values)
+	print(ctx)
