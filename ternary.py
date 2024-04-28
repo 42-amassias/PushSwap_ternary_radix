@@ -9,8 +9,10 @@ class Ternary:
 		self.__decompose()
 
 	def	__getitem__(self, key: int) -> int:
-		if key < 0 or key >= self.__digit_count:
+		if key < 0:
 			return None
+		if key >= self.__digit_count:
+			return (0)
 		return (self.__digits[key])
 
 	def	__str__(self):
