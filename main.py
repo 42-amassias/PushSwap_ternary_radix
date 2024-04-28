@@ -14,8 +14,11 @@ from ternary import Ternary
 
 from binary_radix import binary_radix
 
-USE_ARGV: bool = False
-DEFAULT_VALUES: List[Ternary] = list(map(Ternary, [ 8, 4, 3, 6, 1, 2, 0, 7, 5 ]))
+# 8 4 3 6 1 2 0 7 5
+
+USE_ARGV: bool = True
+# DEFAULT_VALUES: List[Ternary] = list(map(Ternary, [ 8, 4, 3, 6, 1, 2, 0, 7, 5 ]))
+DEFAULT_VALUES: List[Ternary] = list(map(Ternary, [7, 8, 4, 5, 3, 10, 9, 6, 1, 2]))
 
 def	argv_to_values(argv: List[str]) -> List[Ternary]:
 	return (list(map(Ternary, map(int, sum(map(str.split, argv[1:]), [])))))
@@ -30,9 +33,9 @@ def	check_values(values : List[Ternary]) -> bool:
 	return (True)
 
 if __name__ == "__main__":
-	values: List[Ternary] = DEFAULT_VALUES
-	if USE_ARGV:
-		values: List[Ternary] = argv_to_values(sys.argv)
+	# values: List[Ternary] = DEFAULT_VALUES
+	# if USE_ARGV:
+	values: List[Ternary] = argv_to_values(sys.argv)
 	if not check_values(values):
 		exit(1)
 	if values == sorted(values):

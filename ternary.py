@@ -120,8 +120,9 @@ def	check_result(ctx: PushSwap[Ternary]) -> None:
 		eprint(vstr, '|', sstr)
 
 def	radix(ctx: PushSwap[Ternary]):
-	DIGIT_COUNT: int = math.ceil(math.log(len(ctx), 3))
-	for i in range(DIGIT_COUNT):
+	N: int = math.ceil(math.log(len(ctx), 3))
+	for i in range(N):
+		d1 = 0
 		for _ in range(ctx.get_a_len()):
 			v: Ternary = ctx.peek_a()
 			digit: int = v[i]
@@ -130,7 +131,11 @@ def	radix(ctx: PushSwap[Ternary]):
 				ctx.rb()
 			elif digit == 1:
 				ctx.pb()
+				d1 += 1
 			else: # digit == 2
 				ctx.ra()
+		for _ in range(d1):
+			ctx.pa()
 		for _ in range(ctx.get_b_len()):
+			ctx.rrb()
 			ctx.pa()
