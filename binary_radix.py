@@ -1,5 +1,6 @@
-from push_swap import PushSwap
 import math
+
+from push_swap import PushSwap
 
 def	binary_radix(ctx: PushSwap[int]) -> None:
 	digit_count: int = math.ceil(math.log2(ctx.get_element_count()))
