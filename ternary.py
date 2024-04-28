@@ -1,3 +1,10 @@
+import sys
+import math
+import utils
+
+from push_swap import PushSwap
+from utils import eprint
+
 class Ternary:
 	__value: int
 	__digits: list[int]
@@ -75,3 +82,42 @@ class Ternary:
 
 	def	digit_count(self) -> int:
 		return (self.__digit_count)
+
+def	__check_result_header() -> None:
+	utils.eprint_blue('#'*80)
+	utils.eprint_blue('#', end=' ')
+	utils.eprint_cyan('{:<76}'.format("Ternary radix result checker".center(76)), end=' ')
+	utils.eprint_blue('#')
+	utils.eprint_blue('#'*80)
+	utils.eprint()
+
+def	check_result(ctx: PushSwap[Ternary]) -> None:
+	l = ctx.get_a()
+	N = math.ceil(math.log(len(ctx), 3))
+	__check_result_header()
+	for i, (v, s) in enumerate(zip(l, sorted(l))):
+		eprint('[', i, ']', sep='', end=' ')
+		eprint('Got', end=' ')
+		for j in range(N):
+			eprint(v[N - j - 1], end='')
+		eprint(',', end=' ')
+		if v == s:
+			utils.eprint_green('OK')
+			continue
+
+		utils.eprint_red('KO', end=': ')
+		vstr = ''
+		sstr = ''
+		for j in range(N):
+			index = N - j - 1 
+			vd = v[index]
+			sd = s[index]
+			color = utils.TermColor.GREEN if vd == sd else utils.TermColor.RED
+			vstr += color + str(vd)
+			sstr += color + str(sd)
+		vstr += utils.TermColor.RESET
+		sstr += utils.TermColor.RESET
+		eprint(vstr, '|', sstr)
+
+def	radix(ctx: PushSwap[Ternary]):
+	pass
