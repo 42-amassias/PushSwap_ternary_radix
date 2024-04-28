@@ -8,6 +8,7 @@ from push_swap import PushSwap
 from ternary import Ternary
 
 from binary_radix import binary_radix
+from ternary_radix import ternary_radix
 
 USE_ARGV: bool = False
 DEFAULT_VALUES: List[Ternary] = list(map(Ternary, [ 8, 4, 3, 6, 1, 2, 0, 7, 5 ]))
@@ -33,5 +34,5 @@ if __name__ == "__main__":
 	if values == sorted(values):
 		exit(0)
 	ctx: PushSwap[Ternary] = PushSwap[Ternary](values, Ternary)
-	binary_radix(ctx)
+	ternary_radix(ctx)
 	print(ctx)
