@@ -98,22 +98,22 @@ class PushSwap(Generic[T]):
 		print("sb")
 
 	def	ra(self) -> None:
-		if not self.__rotate(self.__a):
+		if self.__a_length < 2 or not self.__rotate(self.__a):
 			return
 		print("ra")
 
 	def	rb(self) -> None:
-		if not self.__rotate(self.__b):
+		if self.__b_length < 2 or not self.__rotate(self.__b):
 			return
 		print("rb")
 
 	def	rra(self) -> None:
-		if not self.__reverse_rotate(self.__a):
+		if self.__a_length < 2 or not self.__reverse_rotate(self.__a):
 			return
 		print("rra")
 
 	def	rrb(self) -> None:
-		if not self.__reverse_rotate(self.__b):
+		if self.__b_length < 2 or not self.__reverse_rotate(self.__b):
 			return
 		print("rrb")
 
