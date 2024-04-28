@@ -11,9 +11,7 @@ class Ternary:
 	def	__getitem__(self, key: int) -> int:
 		if key < 0:
 			return None
-		if key >= self.__digit_count:
-			return (0)
-		return (self.__digits[key])
+		return (self.__digits[key] if key < self.__digit_count else 0)
 
 	def	__str__(self):
 		return (''.join(map(str, reversed(self.__digits))))
