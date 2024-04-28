@@ -1,6 +1,8 @@
-from typing import Generic, Type, TypeVar, List, Deque
-from collections import deque
 import utils
+import sys
+
+from typing import Generic, Type, TypeVar, List, Deque, Callable
+from collections import deque
 
 T = TypeVar("T")
 
@@ -11,8 +13,10 @@ class PushSwap(Generic[T]):
 	__element_count	:	int
 	__a_length		:	int
 	__b_length		:	int
+	__silent		:	bool
 
-	def	__init__(self, initial_config: List[T], _type: Type[T]):
+	def	__init__(self, initial_config: List[T], _type: Type[T], silent=False):
+		self.__silent = silent
 		self.__type = _type
 		self.__element_count = len(initial_config)
 		self.__a_length = self.__element_count
@@ -72,50 +76,58 @@ class PushSwap(Generic[T]):
 		if not stack:
 			return (None)
 		return (stack[0])
+	
+	def	__log(self, msg: str) -> None:
+		if self.__silent:
+			return
+		print(msg)
+
+	def	set_silent(self, silent: bool) -> None:
+		self.__silent = silent
 
 	def	pa(self) -> None:
 		if not self.__push(self.__a, self.__b):
 			return
 		self.__a_length = self.__a_length + 1
 		self.__b_length = self.__b_length - 1
-		print("pa")
+		self.__log("pa")
 
 	def	pb(self) -> None:
 		if not self.__push(self.__b, self.__a):
 			return
 		self.__a_length = self.__a_length - 1
 		self.__b_length = self.__b_length + 1
-		print("pb")
+		self.__log("pb")
 	
 	def	sa(self) -> None:
 		if not self.__swap(self.__a):
 			return
-		print("sa")
+		self.__log("sa")
 
 	def	sb(self) -> None:
 		if not self.__swap(self.__b):
 			return
-		print("sb")
+		self.__log("sb")
 
 	def	ra(self) -> None:
 		if self.__a_length < 2 or not self.__rotate(self.__a):
 			return
-		print("ra")
+		self.__log("ra")
 
 	def	rb(self) -> None:
 		if self.__b_length < 2 or not self.__rotate(self.__b):
 			return
-		print("rb")
+		self.__log("rb")
 
 	def	rra(self) -> None:
 		if self.__a_length < 2 or not self.__reverse_rotate(self.__a):
 			return
-		print("rra")
+		self.__log("rra")
 
 	def	rrb(self) -> None:
 		if self.__b_length < 2 or not self.__reverse_rotate(self.__b):
 			return
-		print("rrb")
+		self.__log("rrb")
 
 	def	peek_a(self) -> T:
 		return (self.__peek(self.__a))
@@ -137,3 +149,7 @@ class PushSwap(Generic[T]):
 
 	def	get_element_count(self) -> int:
 		return (self.__element_count)
+
+	def	remap(self, mapper: Callable[[int, T], T]) -> None:
+		for i, v in enumerate(self.__a):
+			self.__a[i] = mapper(i, v)

@@ -2,8 +2,10 @@ import sys
 import math
 import utils
 
+from typing import List
 from push_swap import PushSwap
 from utils import eprint
+from functools import partial
 
 class Ternary:
 	__value: int
@@ -100,7 +102,7 @@ def	check_result(ctx: PushSwap[Ternary]) -> None:
 		eprint('Got', end=' ')
 		for j in range(N):
 			eprint(v[N - j - 1], end='')
-		eprint(',', end=' ')
+		eprint('(', int(v), '),', sep='', end=' ')
 		if v == s:
 			utils.eprint_green('OK')
 			continue
@@ -119,23 +121,37 @@ def	check_result(ctx: PushSwap[Ternary]) -> None:
 		sstr += utils.TermColor.RESET
 		eprint(vstr, '|', sstr)
 
-def	radix(ctx: PushSwap[Ternary]):
-	N: int = math.ceil(math.log(len(ctx), 3))
+def	ternary_sort(ctx: PushSwap[Ternary], N: int):
+	odd = False
 	for i in range(N):
-		d1 = 0
-		for _ in range(ctx.get_a_len()):
-			v: Ternary = ctx.peek_a()
-			digit: int = v[i]
+		if odd:
+			OPS = (PushSwap.peek_b, PushSwap.pa, PushSwap.ra, PushSwap.rb, PushSwap.get_b_len)
+		else:
+			OPS = (PushSwap.peek_a, PushSwap.pb, PushSwap.rb, PushSwap.ra, PushSwap.get_a_len)
+		for _ in range(OPS[4](ctx)):
+			digit: int = OPS[0](ctx)[i]
 			if digit == 0:
-				ctx.pb()
-				ctx.rb()
+				OPS[1](ctx)
 			elif digit == 1:
-				ctx.pb()
-				d1 += 1
+				OPS[1](ctx)
+				OPS[2](ctx)
 			else: # digit == 2
-				ctx.ra()
-		for _ in range(d1):
-			ctx.pa()
+				OPS[3](ctx)
+		for _ in range(OPS[4](ctx)):
+			OPS[1](ctx)
+		odd ^= True
+	if odd:
 		for _ in range(ctx.get_b_len()):
-			ctx.rrb()
 			ctx.pa()
+
+def	normalize(index: int, value: Ternary, initial: List[Ternary]=[], current: List[Ternary]=[]):
+	return (current[int(initial[index])])
+
+def	radix(ctx: PushSwap[Ternary]) -> None:
+	N: int = math.ceil(math.log(len(ctx), 3))
+	ctx.set_silent(True)
+	INITIAL_DISPOSITION = ctx.get_a()
+	ternary_sort(ctx, N)
+	ctx.remap(partial(normalize, initial=INITIAL_DISPOSITION, current=ctx.get_a()))
+	ctx.set_silent(False)
+	ternary_sort(ctx, N)
