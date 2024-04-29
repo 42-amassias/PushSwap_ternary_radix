@@ -1,7 +1,7 @@
 import utils
 import sys
 
-from typing import Generic, Type, TypeVar, List, Deque, Callable
+from typing import Generic, Type, TypeVar, List, Deque, Callable, Union
 from collections import deque
 
 T = TypeVar("T")
@@ -21,8 +21,8 @@ class PushSwap(Generic[T]):
 		self.__element_count = len(initial_config)
 		self.__a_length = self.__element_count
 		self.__b_length = 0
-		self.__a = deque[T](initial_config)
-		self.__b = deque[T]()
+		self.__a = deque(initial_config)
+		self.__b = deque()
 		self.__normalize()
 
 	def	__str__(self) -> str:
@@ -40,7 +40,7 @@ class PushSwap(Generic[T]):
 	def	__normalize(self) -> None:
 		l = map(utils.fst, sorted(enumerate(self.__a), key=utils.snd))
 		l = map(utils.fst, sorted(enumerate(l), key=utils.snd))
-		self.__a = deque[T](map(self.__type, l))
+		self.__a = deque(map(self.__type, l))
 
 	def	__push(self, dest: Deque[T], src: Deque[T]) -> bool:
 		if not src:
@@ -72,7 +72,7 @@ class PushSwap(Generic[T]):
 		stack.rotate(1)
 		return (True)
 
-	def	__peek(self, stack: Deque[T]) -> T | None:
+	def	__peek(self, stack: Deque[T]) -> Union[T, None]:
 		if not stack:
 			return (None)
 		return (stack[0])
