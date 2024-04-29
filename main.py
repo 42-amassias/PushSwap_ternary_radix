@@ -1,25 +1,24 @@
 #!/usr/bin/python3
 
 import sys
-import math
 import random
 
 import ternary
+import binary
 
 from typing import List
 
 from utils import eprint
 
 from push_swap import PushSwap
+
 from ternary import Ternary
 
-from binary_radix import binary_radix
-
-USE_BINARY: bool = False
-USE_ARGV: bool = True
+USE_BINARY: bool = True
+USE_ARGV: bool = False
 USE_RANDOM: bool = True
 if USE_RANDOM:
-	DEFAULT_VALUES_COUNT = 8
+	DEFAULT_VALUES_COUNT = 500
 	DEFAULT_VALUES = list(range(DEFAULT_VALUES_COUNT))
 	random.shuffle(DEFAULT_VALUES)
 else:
@@ -47,14 +46,12 @@ if __name__ == "__main__":
 	if values == sorted(values):
 		exit(0)
 	if USE_BINARY:
-		values = list(map(int, values))
-		ctx: PushSwap[int] = PushSwap[int](values, int)
-		eprint(ctx, end='\n\n')
-		binary_radix(ctx)
-		eprint('\n', ctx, sep='', end='\n\n')
+		_class = binary
+		ctx: PushSwap[int] = PushSwap[int](list(map(int, values)), int)
 	else:
+		_class = ternary
 		ctx: PushSwap[Ternary] = PushSwap[Ternary](values, Ternary)
-		eprint(ctx, end='\n\n')
-		ternary.radix(ctx)
-		eprint('\n', ctx, sep='', end='\n\n')
-		ternary.check_result(ctx)
+	eprint(ctx, end='\n\n')
+	_class.radix(ctx)
+	eprint('\n', ctx, sep='', end='\n\n')
+	_class.check_result(ctx)
