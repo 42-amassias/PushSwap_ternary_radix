@@ -15,8 +15,7 @@ from ternary import Ternary
 
 from binary_radix import binary_radix
 
-# 8 4 3 6 1 2 0 7 5
-
+USE_BINARY: bool = False
 USE_ARGV: bool = True
 USE_RANDOM: bool = True
 if USE_RANDOM:
@@ -47,8 +46,15 @@ if __name__ == "__main__":
 		exit(1)
 	if values == sorted(values):
 		exit(0)
-	ctx: PushSwap[Ternary] = PushSwap[Ternary](values, Ternary)
-	eprint(ctx, end='\n\n')
-	ternary.radix(ctx)
-	eprint('\n', ctx, sep='', end='\n\n')
-	ternary.check_result(ctx)
+	if USE_BINARY:
+		values = list(map(int, values))
+		ctx: PushSwap[int] = PushSwap[int](values, int)
+		eprint(ctx, end='\n\n')
+		binary_radix(ctx)
+		eprint('\n', ctx, sep='', end='\n\n')
+	else:
+		ctx: PushSwap[Ternary] = PushSwap[Ternary](values, Ternary)
+		eprint(ctx, end='\n\n')
+		ternary.radix(ctx)
+		eprint('\n', ctx, sep='', end='\n\n')
+		ternary.check_result(ctx)
