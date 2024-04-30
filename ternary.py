@@ -79,11 +79,11 @@ def	ternary_sort(ctx: PushSwap[Ternary], N: int, silent: bool):
 	for _ in range(ctx.get_b_len()):
 		ctx.pa()
 
-def	__normalize(index: int, _: Ternary, initial: List[Ternary]=[], current: List[Ternary]=[]):
+def	__normalize(index: int, _, initial: List[Ternary]=[], current: List[Ternary]=[]):
 	return (current[int(initial[index])])
 
 def	radix(ctx: PushSwap[Ternary]) -> None:
-	N: int = math.ceil(math.log(len(ctx), 3))
+	N: int = math.ceil(math.log(len(ctx), Ternary.get_base()))
 	INITIAL_DISPOSITION = ctx.get_a()
 	ternary_sort(ctx, N, True)
 	ctx.remap(partial(__normalize, initial=INITIAL_DISPOSITION, current=ctx.get_a()))

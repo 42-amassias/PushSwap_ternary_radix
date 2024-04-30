@@ -1,13 +1,11 @@
 from typing import List
 
 class Number:
-	__base: int
 	__value: int
 	__digits: List[int]
 	__digit_count: int
 
-	def	__init__(self, base: int, value: int):
-		self.__base = base
+	def	__init__(self, value: int):
 		self.__value = value
 		self.__digits = []
 		self.__decompose()
@@ -70,24 +68,27 @@ class Number:
 
 	def	__decompose(self) -> None:
 		def	decompose(n: int) -> int:
-			length = decompose(n // self.__base) if n >= self.__base else 0
-			self.__digits.append(n % self.__base)
+			length = decompose(n // self.__class__.get_base()) if n >= self.__class__.get_base() else 0
+			self.__digits.append(n % self.__class__.get_base())
 			return (length + 1)
-
 		self.__digit_count = decompose(self.__value)
 		self.__digits.reverse()
 
 	def	digit_count(self) -> int:
 		return (self.__digit_count)
 
+	@staticmethod
+	def	get_base() -> int:
+		raise NotImplementedError("Please Implement this method")
+
 class Binary(Number):
-	def	__init__(self, value: int):
-		super().__init__(2, value)
+	def	get_base() -> int:
+		return (2)
 
 class Ternary(Number):
-	def	__init__(self, value: int):
-		super().__init__(3, value)
+	def	get_base() -> int:
+		return (3)
 
 class Quaternary(Number):
-	def	__init__(self, value: int):
-		super().__init__(4, value)
+	def	get_base() -> int:
+		return (4)
