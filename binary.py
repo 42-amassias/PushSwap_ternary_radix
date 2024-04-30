@@ -4,6 +4,8 @@ import utils
 from utils import eprint
 from push_swap import PushSwap
 
+from number import Binary
+
 def	__check_result_header() -> None:
 	W = 80
 	utils.eprint_blue('#' * W)
@@ -13,7 +15,7 @@ def	__check_result_header() -> None:
 	utils.eprint_blue('#' * W)
 	utils.eprint()
 
-def	check_result(ctx: PushSwap[int]) -> None:
+def	check_result(ctx: PushSwap[Binary]) -> None:
 	l = ctx.get_a()
 	N = math.ceil(math.log(len(ctx), 2))
 	__check_result_header()
@@ -21,7 +23,7 @@ def	check_result(ctx: PushSwap[int]) -> None:
 		eprint('[', i, ']', sep='', end=' ')
 		eprint('Got', end=' ')
 		for j in range(N):
-			eprint(1 if (v & (1 << (N - j - 1))) else 0, end='')
+			eprint(v[N - j - 1], end='')
 		eprint('(', int(v), '),', sep='', end=' ')
 		if v == s:
 			utils.eprint_green('OK')
@@ -32,8 +34,8 @@ def	check_result(ctx: PushSwap[int]) -> None:
 		sstr = ''
 		for j in range(N):
 			index = N - j - 1 
-			vd = 1 if (v & (1 << (N - index - 1))) else 0
-			sd = 1 if (s & (1 << (N - index - 1))) else 0
+			vd = v[index]
+			sd = s[index]
 			color = utils.TermColor.GREEN if vd == sd else utils.TermColor.RED
 			vstr += color + str(vd)
 			sstr += color + str(sd)
@@ -41,10 +43,10 @@ def	check_result(ctx: PushSwap[int]) -> None:
 		sstr += utils.TermColor.RESET
 		eprint(vstr, '|', sstr)
 
-def	radix(ctx: PushSwap[int]) -> None:
+def	radix(ctx: PushSwap[Binary]) -> None:
 	digit_count: int = math.ceil(math.log2(ctx.get_element_count()))
 	for i in range(digit_count):
 		for _ in range(ctx.get_a_len()):
-			ctx.pb() if (int(ctx.peek_a()) & (1 << i) == 0) else ctx.ra()
+			ctx.ra() if ctx.peek_a()[i] else ctx.pb()
 		for _ in range(ctx.get_b_len()):
 			ctx.pa()
