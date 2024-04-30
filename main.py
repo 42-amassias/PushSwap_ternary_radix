@@ -3,20 +3,19 @@
 import sys
 import random
 
-import ternary
-import binary
-
 from typing import List
-
 from utils import eprint
 
 from push_swap import PushSwap
 
+import binary
 from number import Binary
+
+import ternary
 from number import Ternary
 
-USE_BINARY: bool = True
-USE_ARGV: bool = False
+BASE: int = 3
+USE_ARGV: bool = True
 USE_RANDOM: bool = True
 if USE_RANDOM:
 	DEFAULT_VALUES_COUNT = 20
@@ -43,13 +42,16 @@ if __name__ == "__main__":
 		exit(1)
 	if values == sorted(values):
 		exit(0)
-	if USE_BINARY:
-		_class = binary
+	if BASE == 2:
+		sorter_class = binary
 		ctx: PushSwap[Binary] = PushSwap[Binary](list(map(Binary, values)), Binary)
-	else:
-		_class = ternary
+	elif BASE == 3:
+		sorter_class = ternary
 		ctx: PushSwap[Ternary] = PushSwap[Ternary](list(map(Ternary, values)), Ternary)
+	else:
+		eprint(BASE, ": Unhandled base", sep='')
+		exit(1)
 	eprint(ctx, end='\n\n')
-	_class.radix(ctx)
+	sorter_class.radix(ctx)
 	eprint('\n', ctx, sep='', end='\n\n')
-	_class.check_result(ctx)
+	sorter_class.check_result(ctx)
