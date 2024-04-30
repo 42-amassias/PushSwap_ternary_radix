@@ -14,7 +14,10 @@ from number import Binary
 import ternary
 from number import Ternary
 
-BASE: int = 3
+import quaternary
+from number import Quaternary
+
+BASE: int = 4
 USE_ARGV: bool = True
 USE_RANDOM: bool = True
 if USE_RANDOM:
@@ -48,6 +51,9 @@ if __name__ == "__main__":
 	elif BASE == 3:
 		sorter_class = ternary
 		ctx: PushSwap[Ternary] = PushSwap[Ternary](list(map(Ternary, values)), Ternary)
+	elif BASE == 4:
+		sorter_class = quaternary
+		ctx: PushSwap[Quaternary] = PushSwap[Quaternary](list(map(Quaternary, values)), Quaternary)
 	else:
 		eprint(BASE, ": Unhandled base", sep='')
 		exit(1)
