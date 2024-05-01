@@ -2,6 +2,7 @@
 
 import sys
 import random
+import math
 
 from typing import List
 from utils import eprint
@@ -17,7 +18,7 @@ from number import Ternary
 import quaternary
 from number import Quaternary
 
-BASE: int = 4
+BASE: int = 3
 USE_ARGV: bool = True
 USE_RANDOM: bool = True
 if USE_RANDOM:
@@ -49,14 +50,29 @@ if __name__ == "__main__":
 		sorter_class = binary
 		ctx: PushSwap[Binary] = PushSwap[Binary](list(map(Binary, values)), Binary)
 	elif BASE == 3:
-		sorter_class = ternary
-		ctx: PushSwap[Ternary] = PushSwap[Ternary](list(map(Ternary, values)), Ternary)
+		# 3 * 3^k < N <= 4 * 3^k
+		N = len(values)
+		K1 = math.log(N, 3) - 1
+		if K1 == math.floor(K1):
+			K1 = math.floor(K1) - 1
+		else:
+			K1 = math.floor(K1)
+		K2 = math.ceil(math.log(N, 3) - math.log(4, 3))
+		print(K1, K2)
+		if K1 == K2:
+			sorter_class = quaternary
+			ctx: PushSwap[Quaternary] = PushSwap[Quaternary](list(map(Quaternary, values)), Quaternary)
+		else:
+			sorter_class = ternary
+			ctx: PushSwap[Ternary] = PushSwap[Ternary](list(map(Ternary, values)), Ternary)
 	elif BASE == 4:
 		sorter_class = quaternary
 		ctx: PushSwap[Quaternary] = PushSwap[Quaternary](list(map(Quaternary, values)), Quaternary)
 	else:
 		eprint(BASE, ": Unhandled base", sep='')
 		exit(1)
+
+	print(sorter_class)
 	eprint(ctx, end='\n\n')
 	sorter_class.radix(ctx)
 	eprint('\n', ctx, sep='', end='\n\n')
