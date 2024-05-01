@@ -89,7 +89,6 @@ def	Quaternary_sort(ctx: PushSwap[Quaternary], N: int, silent: bool):
 			way1, way2, len = (_to_a1, _to_a2, ctx.get_b_len)
 		else:
 			way1, way2, len = (_to_b1, _to_b2, ctx.get_a_len)
-		print(len())
 		[way1(ctx, i) for _ in range(len())]
 		[way2(ctx, i) for _ in range(len())]
 		odd ^= True
