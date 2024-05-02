@@ -6,7 +6,7 @@
 /*   By: amassias <amassias@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:49:29 by amassias          #+#    #+#             */
-/*   Updated: 2024/05/02 14:28:29 by amassias         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:15:47 by amassias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,16 @@
 
 #include <stdlib.h>
 
-static void	_create_stacks(
+static int	_compare(
+				void *a,
+				void *b
+				);
+
+static bool	_normalize(
+				t_push_swap *push_swap
+				);
+
+static bool	_create_stacks(
 				t_push_swap *push_swap
 				);
 
@@ -38,11 +47,47 @@ t_push_swap	*push_swap_create(
 	push_swap->silent = false;
 	push_swap->value_count = count;
 	ft_memcpy(&push_swap->values, values, sizeof(int) * count);
-	_create_stacks(push_swap);
+	if (_create_stacks(push_swap))
+		return (push_swap_destroy(&push_swap), NULL);
 	return (push_swap);
 }
 
-static void	_create_stacks(
+static int	_compare(
+				void *a,
+				void *b
+				)
+{
+	return (**(int **)b - **(int **)a);
+}
+
+static bool	_normalize(
+				t_push_swap *push_swap
+				)
+{
+	int		**values;
+	size_t	i;
+
+	values = malloc(push_swap->value_count * sizeof(int *));
+	if (values == NULL)
+		return (true);
+	i = 0;
+	while (i < push_swap->value_count)
+	{
+		values[i] = &push_swap->values[i];
+		++i;
+	}
+	ft_qsort(values, push_swap->value_count, sizeof(int *), _compare);
+	i = 0;
+	while (i < push_swap->value_count)
+	{
+		*values[i] = (int)i;
+		++i;
+	}
+	free(values);
+	return (false);
+}
+
+static bool	_create_stacks(
 				t_push_swap *push_swap
 				)
 {
@@ -65,4 +110,5 @@ static void	_create_stacks(
 		.end = ft_lstlast(org),
 		.count = push_swap->value_count,
 	};
+	return (_normalize(push_swap));
 }
