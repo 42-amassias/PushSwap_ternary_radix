@@ -1,9 +1,9 @@
 # Push Swap's Ternary radix sort
 
 ## Subject
-Push swap is a project from [École 42](https://42.fr) in which you have to sort a [stack](definitions#stack) using two [stacks](definitions#stack) (`A` and `B`).
+Push swap is a project from [École 42](https://42.fr) in which you have to sort a [stack](definitions.md#stack) using two [stacks](definitions.md#stack) (`A` and `B`).
 
-To manipulate the [stacks](definitions#stack), you have 11 available [instructions](instructions#instructions).
+To manipulate the [stacks](definitions.md#stack), you have 11 available [instructions](instructions.md#instructions).
 
 ---
 
