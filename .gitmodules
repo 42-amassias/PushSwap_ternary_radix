@@ -1,0 +1,3 @@
+[submodule "sources/c/third-party/libft-full"]
+	path = sources/c/third-party/libft-full
+	url = git@github.com:Dyamen1411/42-libft-full.git
