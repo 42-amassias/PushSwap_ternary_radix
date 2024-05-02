@@ -6,7 +6,7 @@
 /*   By: amassias <amassias@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:49:29 by amassias          #+#    #+#             */
-/*   Updated: 2024/05/02 16:15:47 by amassias         ###   ########.fr       */
+/*   Updated: 2024/05/02 17:46:25 by amassias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int	_compare(
 				void *b
 				)
 {
-	return (**(int **)b - **(int **)a);
+	return (**(int **)a - **(int **)b);
 }
 
 static bool	_normalize(

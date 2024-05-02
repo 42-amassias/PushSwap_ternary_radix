@@ -6,7 +6,7 @@
 #    By: amassias <amassias@student.42lehavre.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 01:35:15 by amassias          #+#    #+#              #
-#    Updated: 2024/05/02 14:00:54 by amassias         ###   ########.fr        #
+#    Updated: 2024/05/02 18:08:57 by amassias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,12 +47,14 @@ LFLAGS			:=		\
 # **************************************************************************** #
 
 FILES			:=		\
-	main push_swap/push_swap_create push_swap/push_swap_destroy				\
+	main stack/stack_create stack/stack_destroy stack/stack_iter			\
+	stack/stack_peek stack/stack_pop stack/stack_push						\
+	stack/stack_reverse_rotate stack/stack_rotate stack/stack_swap			\
+	push_swap/push_swap_create push_swap/push_swap_destroy					\
 	push_swap/push_swap_push push_swap/push_swap_reverse_rotate				\
 	push_swap/push_swap_rotate push_swap/push_swap_set_silent				\
-	push_swap/push_swap_swap stack/stack_create stack/stack_destroy			\
-	stack/stack_iter stack/stack_peek stack/stack_pop stack/stack_push		\
-	stack/stack_reverse_rotate stack/stack_rotate stack/stack_swap			\
+	push_swap/push_swap_swap algorithms/ternary_radix_sort utils/array_max	\
+	utils/compare_int utils/digit_count utils/get_digit utils/list_index	\
 
 SRCS			:=	$(addprefix $(SRC_DIR)/,$(addsuffix .c,$(FILES)))
 
