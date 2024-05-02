@@ -1,15 +1,10 @@
-# Push Swap's Ternary radix sort
+# Instructions
 
-## Subject
-Push swap is a project from [École 42](https://42.fr) in which you have to sort a [stack](#stack) using two [stacks](#stack) (`A` and `B`).
-
-To manipulate the [stacks](#stack), you have 11 available [instructions](#instructions).
+[Go back to index](README.md)
 
 ---
 
-## Instructions
-
-- ### PA
+- ## PA
 	Pushes the top element of `B` onto `A`.<br/>
 	If `B` is empty, does nothing.
 
@@ -23,7 +18,7 @@ To manipulate the [stacks](#stack), you have 11 available [instructions](#instru
 	`A`: [ __`E3`__, `E1`, `E2` ]<br/>
 	`B`: [ `E4`, `E5` ]
 
-- ### PB
+- ## PB
 	Pushes the top element of `A` onto `B`.<br/>
 	If `A` is empty, does nothing.
 
@@ -37,7 +32,7 @@ To manipulate the [stacks](#stack), you have 11 available [instructions](#instru
 	`A`: [ `E2` ]<br/>
 	`B`: [ __`E1`__, `E3`, `E4`, `E5` ]
 
-- ### SA
+- ## SA
 	Swaps the two top elements of `A`.<br/>
 	If `A` has less than two elements, does nothing.
 
@@ -51,7 +46,7 @@ To manipulate the [stacks](#stack), you have 11 available [instructions](#instru
 	`A`: [ __`E2`__, __`E1`__ ]<br/>
 	`B`: [ `E3`, `E4`, `E5` ]
 
-- ### SB
+- ## SB
 	Swaps the two top elements of `A`.<br/>
 	If `A` has less than two elements, does nothing.
 
@@ -65,7 +60,7 @@ To manipulate the [stacks](#stack), you have 11 available [instructions](#instru
 	`A`: [ `E1`, `E2` ]<br/>
 	`B`: [ __`E4`__, __`E3`__, `E5` ]
 
-- ### SS
+- ## SS
 	Does [`SA`](#sa) and [`SB`](#sb) simultaneously.
 
 	__Exemple__:
@@ -78,7 +73,7 @@ To manipulate the [stacks](#stack), you have 11 available [instructions](#instru
 	`A`: [ __`E2`__, __`E1`__ ]<br/>
 	`B`: [ __`E4`__, __`E3`__, `E5` ]
 
-- ### RA
+- ## RA
 	The first element of `A` becomes the last.<br/>
 	If `A` is empty, does nothing.
 
@@ -92,7 +87,7 @@ To manipulate the [stacks](#stack), you have 11 available [instructions](#instru
 	`A`: [ `E2`, __`E1`__ ]<br/>
 	`B`: [ `E3`, `E4`, `E5` ]
 
-- ### RB
+- ## RB
 	The first element of `B` becomes the last.<br/>
 	If `B` is empty, does nothing.
 
@@ -106,7 +101,7 @@ To manipulate the [stacks](#stack), you have 11 available [instructions](#instru
 	`A`: [ `E1`, `E2` ]<br/>
 	`B`: [ `E4`, `E5`, __`E3`__ ]
 
-- ### RR
+- ## RR
 	Does [`RA`](#ra) and [`RB`](#rb) simultaneously.
 
 	__Exemple__:
@@ -119,7 +114,7 @@ To manipulate the [stacks](#stack), you have 11 available [instructions](#instru
 	`A`: [ `E2`, __`E1`__ ]<br/>
 	`B`: [ `E4`, `E5`, __`E3`__ ]
 
-- ### RRA
+- ## RRA
 	The last element of `A` becomes the first.<br/>
 	If `A` is empty, does nothing.
 
@@ -133,7 +128,7 @@ To manipulate the [stacks](#stack), you have 11 available [instructions](#instru
 	`A`: [ __`E2`__, `E1` ]<br/>
 	`B`: [ `E3`, `E4`, `E5` ]
 
-- ### RRB
+- ## RRB
 	The last element of `B` becomes the first.<br/>
 	If `B` is empty, does nothing.
 
@@ -147,7 +142,7 @@ To manipulate the [stacks](#stack), you have 11 available [instructions](#instru
 	`A`: [ `E1`, `E2` ]<br/>
 	`B`: [ __`E5`__, `E3`, `E4` ]
 
-- ### RRR
+- ## RRR
 	Does [`RRA`](#rra) and [`RRB`](#rrb) simultaneously.
 
 	__Exemple__:
@@ -162,17 +157,6 @@ To manipulate the [stacks](#stack), you have 11 available [instructions](#instru
 
 ---
 
-## Definitions
+[Go back to index](README.md)
 
-### Stack
-A stack is a data structure which resembles a list in which you can push (insert) and pop (remove) elements except you can only access the top of the stack.
-
-__Exemple__:
-
-1. You start with an empty stack: `[]`.
-1. Then you can push an element `E1` in it: `[E1]`
-1. Then an other element `E2` in it: `[E2, E1]`
-1. Why not a third `E3` in it: `[E3, E2, E1]`
-1. Then you can pop: `[E2, E1]`.
-
-The key element to remember is: __You can only touch the top of a stack.__
+---
