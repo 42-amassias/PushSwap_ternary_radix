@@ -13,12 +13,12 @@ To manipulate the [stacks](#stack), you have 11 available [instructions](#instru
 	Pushes the top element of `B` onto `A`.<br/>
 	If `B` is empty, does nothing.
 
-	Exemple:
+	__Exemple__:
 
 	`A`: [ `E1`, `E2` ]<br/>
 	`B`: [ __`E3`__, `E4`, `E5` ]
 
-	Will become:
+	__Will become__:
 
 	`A`: [ __`E3`__, `E1`, `E2` ]<br/>
 	`B`: [ `E4`, `E5` ]
@@ -27,12 +27,12 @@ To manipulate the [stacks](#stack), you have 11 available [instructions](#instru
 	Pushes the top element of `A` onto `B`.<br/>
 	If `A` is empty, does nothing.
 
-	Exemple:
+	__Exemple__:
 
 	`A`: [ __`E1`__, `E2` ]<br/>
 	`B`: [ `E3`, `E4`, `E5` ]
 
-	Will become:
+	__Will become__:
 
 	`A`: [ `E2` ]<br/>
 	`B`: [ __`E1`__, `E3`, `E4`, `E5` ]
@@ -41,12 +41,12 @@ To manipulate the [stacks](#stack), you have 11 available [instructions](#instru
 	Swaps the two top elements of `A`.<br/>
 	If `A` has less than two elements, does nothing.
 
-	Exemple:
+	__Exemple__:
 
 	`A`: [ __`E1`__, __`E2`__ ]<br/>
 	`B`: [ `E3`, `E4`, `E5` ]
 
-	Will become:
+	__Will become__:
 
 	`A`: [ __`E2`__, __`E1`__ ]<br/>
 	`B`: [ `E3`, `E4`, `E5` ]
@@ -55,12 +55,12 @@ To manipulate the [stacks](#stack), you have 11 available [instructions](#instru
 	Swaps the two top elements of `A`.<br/>
 	If `A` has less than two elements, does nothing.
 
-	Exemple:
+	__Exemple__:
 
 	`A`: [ `E1`, `E2` ]<br/>
 	`B`: [ __`E3`__, __`E4`__, `E5` ]
 
-	Will become:
+	__Will become__:
 
 	`A`: [ `E1`, `E2` ]<br/>
 	`B`: [ __`E4`__, __`E3`__, `E5` ]
@@ -68,12 +68,12 @@ To manipulate the [stacks](#stack), you have 11 available [instructions](#instru
 - ### SS
 	Does [`SA`](#sa) and [`SB`](#sb) simultaneously.
 
-	Exemple:
+	__Exemple__:
 
 	`A`: [ __`E1`__, __`E2`__ ]<br/>
 	`B`: [ __`E3`__, __`E4`__, `E5` ]
 
-	Will become:
+	__Will become__:
 
 	`A`: [ __`E2`__, __`E1`__ ]<br/>
 	`B`: [ __`E4`__, __`E3`__, `E5` ]
@@ -82,12 +82,12 @@ To manipulate the [stacks](#stack), you have 11 available [instructions](#instru
 	The first element of `A` becomes the last.<br/>
 	If `A` is empty, does nothing.
 
-	Exemple:
+	__Exemple__:
 
 	`A`: [ __`E1`__, `E2` ]<br/>
 	`B`: [ `E3`, `E4`, `E5` ]
 
-	Will become:
+	__Will become__:
 
 	`A`: [ `E2`, __`E1`__ ]<br/>
 	`B`: [ `E3`, `E4`, `E5` ]
@@ -96,12 +96,12 @@ To manipulate the [stacks](#stack), you have 11 available [instructions](#instru
 	The first element of `B` becomes the last.<br/>
 	If `B` is empty, does nothing.
 
-	Exemple:
+	__Exemple__:
 
 	`A`: [ `E1`, `E2` ]<br/>
 	`B`: [ __`E3`__, `E4`, `E5` ]
 
-	Will become:
+	__Will become__:
 
 	`A`: [ `E1`, `E2` ]<br/>
 	`B`: [ `E4`, `E5`, __`E3`__ ]
@@ -109,12 +109,12 @@ To manipulate the [stacks](#stack), you have 11 available [instructions](#instru
 - ### RR
 	Does [`RA`](#ra) and [`RB`](#rb) simultaneously.
 
-	Exemple:
+	__Exemple__:
 
 	`A`: [ __`E1`__, `E2` ]<br/>
 	`B`: [ __`E3`__, `E4`, `E5` ]
 
-	Will become:
+	__Will become__:
 
 	`A`: [ `E2`, __`E1`__ ]<br/>
 	`B`: [ `E4`, `E5`, __`E3`__ ]
@@ -123,12 +123,12 @@ To manipulate the [stacks](#stack), you have 11 available [instructions](#instru
 	The last element of `A` becomes the first.<br/>
 	If `A` is empty, does nothing.
 
-	Exemple:
+	__Exemple__:
 
 	`A`: [ `E1`, __`E2`__ ]<br/>
 	`B`: [ `E3`, `E4`, `E5` ]
 
-	Will become:
+	__Will become__:
 
 	`A`: [ __`E2`__, `E1` ]<br/>
 	`B`: [ `E3`, `E4`, `E5` ]
@@ -137,12 +137,12 @@ To manipulate the [stacks](#stack), you have 11 available [instructions](#instru
 	The last element of `B` becomes the first.<br/>
 	If `B` is empty, does nothing.
 
-	Exemple:
+	__Exemple__:
 
 	`A`: [ `E1`, `E2` ]<br/>
 	`B`: [ `E3`, `E4`, __`E5`__ ]
 
-	Will become:
+	__Will become__:
 
 	`A`: [ `E1`, `E2` ]<br/>
 	`B`: [ __`E5`__, `E3`, `E4` ]
@@ -150,12 +150,12 @@ To manipulate the [stacks](#stack), you have 11 available [instructions](#instru
 - ### RRR
 	Does [`RRA`](#rra) and [`RRB`](#rrb) simultaneously.
 
-	Exemple:
+	__Exemple__:
 
 	`A`: [ `E1`, __`E2`__ ]<br/>
 	`B`: [ `E3`, `E4`, __`E5`__ ]
 
-	Will become:
+	__Will become__:
 
 	`A`: [ __`E2`__, `E1` ]<br/>
 	`B`: [ __`E5`__, `E3`, `E4` ]
@@ -167,7 +167,7 @@ To manipulate the [stacks](#stack), you have 11 available [instructions](#instru
 ### Stack
 A stack is a data structure which resembles a list in which you can push (insert) and pop (remove) elements except you can only access the top of the stack.
 
-Exemple:
+__Exemple__:
 
 1. You start with an empty stack: `[]`.
 1. Then you can push an element `E1` in it: `[E1]`

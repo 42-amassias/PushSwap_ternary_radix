@@ -14,12 +14,12 @@ Pour manipuler ces [piles](#pile), il existe 11 [instructions](#instructions).
 	Empile l'élement au sommet de `B` sur `A` et dépile `B`.<br/>
 	Si `B` est vide, ne fait rien.
 
-	Example:
+	__Example__:
 
 	`A`: [ `E1`, `E2` ]<br/>
 	`B`: [ __`E3`__, `E4`, `E5` ]
 
-	Deviendra:
+	__Deviendra__:
 
 	`A`: [ __`E3`__, `E1`, `E2` ]<br/>
 	`B`: [ `E4`, `E5` ]
@@ -28,12 +28,12 @@ Pour manipuler ces [piles](#pile), il existe 11 [instructions](#instructions).
 	Empile l'élement au sommet de `A` sur `B` et dépile `A`.<br/>
 	Si `A` est vide, ne fait rien.
 
-	Example:
+	__Example__:
 
 	`A`: [ __`E1`__, `E2` ]<br/>
 	`B`: [ `E3`, `E4`, `E5` ]
 
-	Deviendra:
+	__Deviendra__:
 
 	`A`: [ `E2` ]<br/>
 	`B`: [ __`E1`__, `E3`, `E4`, `E5` ]
@@ -42,12 +42,12 @@ Pour manipuler ces [piles](#pile), il existe 11 [instructions](#instructions).
 	Échange les deux premiers élements de `A`.<br/>
 	Si `A` a moins de deux élements, ne fait rien.
 
-	Example:
+	__Example__:
 
 	`A`: [ __`E1`__, __`E2`__ ]<br/>
 	`B`: [ `E3`, `E4`, `E5` ]
 
-	Deviendra:
+	__Deviendra__:
 
 	`A`: [ __`E2`__, __`E1`__ ]<br/>
 	`B`: [ `E3`, `E4`, `E5` ]
@@ -56,12 +56,12 @@ Pour manipuler ces [piles](#pile), il existe 11 [instructions](#instructions).
 	Échange les deux premiers élements de `B`.<br/>
 	Si `B` a moins de deux élements, ne fait rien.
 
-	Example:
+	__Example__:
 
 	`A`: [ `E1`, `E2` ]<br/>
 	`B`: [ __`E3`__, __`E4`__, `E5` ]
 
-	Deviendra:
+	__Deviendra__:
 
 	`A`: [ `E1`, `E2` ]<br/>
 	`B`: [ __`E4`__, __`E3`__, `E5` ]
@@ -69,12 +69,12 @@ Pour manipuler ces [piles](#pile), il existe 11 [instructions](#instructions).
 - ### SS
 	Éxecute [`SA`](#sa) et [`SB`](#sb) simultanément.
 
-	Example:
+	__Example__:
 
 	`A`: [ __`E1`__, __`E2`__ ]<br/>
 	`B`: [ __`E3`__, __`E4`__, `E5` ]
 
-	Deviendra:
+	__Deviendra__:
 
 	`A`: [ __`E2`__, __`E1`__ ]<br/>
 	`B`: [ __`E4`__, __`E3`__, `E5` ]
@@ -83,12 +83,12 @@ Pour manipuler ces [piles](#pile), il existe 11 [instructions](#instructions).
 	Le premier élement de `A` deviens le dernier<br/>
 	Si `A` est vide, ne fait rien.
 
-	Example:
+	__Example__:
 
 	`A`: [ __`E1`__, `E2` ]<br/>
 	`B`: [ `E3`, `E4`, `E5` ]
 
-	Deviendra:
+	__Deviendra__:
 
 	`A`: [ `E2`, __`E1`__ ]<br/>
 	`B`: [ `E3`, `E4`, `E5` ]
@@ -97,12 +97,12 @@ Pour manipuler ces [piles](#pile), il existe 11 [instructions](#instructions).
 	Le premier élement de `B` deviens le dernier<br/>
 	Si `B` est vide, ne fait rien.
 
-	Example:
+	__Example__:
 
 	`A`: [ `E1`, `E2` ]<br/>
 	`B`: [ __`E3`__, `E4`, `E5` ]
 
-	Deviendra:
+	__Deviendra__:
 
 	`A`: [ `E1`, `E2` ]<br/>
 	`B`: [ `E4`, `E5`, __`E3`__ ]
@@ -110,12 +110,12 @@ Pour manipuler ces [piles](#pile), il existe 11 [instructions](#instructions).
 - ### RR
 	Éxecute [`RA`](#ra) et [`RB`](#rb) simultanément.
 
-	Example:
+	__Example__:
 
 	`A`: [ __`E1`__, `E2` ]<br/>
 	`B`: [ __`E3`__, `E4`, `E5` ]
 
-	Deviendra:
+	__Deviendra__:
 
 	`A`: [ `E2`, __`E1`__ ]<br/>
 	`B`: [ `E4`, `E5`, __`E3`__ ]
@@ -124,12 +124,12 @@ Pour manipuler ces [piles](#pile), il existe 11 [instructions](#instructions).
 	Le dernier élement de `A` deviens le premier<br/>
 	Si `A` est vide, ne fait rien.
 
-	Example:
+	__Example__:
 
 	`A`: [ `E1`, __`E2`__ ]<br/>
 	`B`: [ `E3`, `E4`, `E5` ]
 
-	Deviendra:
+	__Deviendra__:
 
 	`A`: [ __`E2`__, `E1` ]<br/>
 	`B`: [ `E3`, `E4`, `E5` ]
@@ -138,12 +138,12 @@ Pour manipuler ces [piles](#pile), il existe 11 [instructions](#instructions).
 	Le dernier élement de `B` deviens le premier<br/>
 	Si `B` est vide, ne fait rien.
 
-	Example:
+	__Example__:
 
 	`A`: [ `E1`, `E2` ]<br/>
 	`B`: [ `E3`, `E4`, __`E5`__ ]
 
-	Deviendra:
+	__Deviendra__:
 
 	`A`: [ `E1`, `E2` ]<br/>
 	`B`: [ __`E5`__, `E3`, `E4` ]
@@ -151,12 +151,12 @@ Pour manipuler ces [piles](#pile), il existe 11 [instructions](#instructions).
 - ### RRR
 	Éxecute [`RRA`](#rra) et [`RRB`](#rrb) simultanément.
 
-	Example:
+	__Example__:
 
 	`A`: [ `E1`, __`E2`__ ]<br/>
 	`B`: [ `E3`, `E4`, __`E5`__ ]
 
-	Deviendra:
+	__Deviendra__:
 
 	`A`: [ __`E2`__, `E1` ]<br/>
 	`B`: [ __`E5`__, `E3`, `E4` ]
@@ -168,7 +168,7 @@ Pour manipuler ces [piles](#pile), il existe 11 [instructions](#instructions).
 ### Pile
 Une pile est une structure de donnée qui ressemble à une liste dans laquelle on peut empiler (insérer) et dépiler (retirer) des élements mais seulement en pouvant acceder au dessus de cette pile.
 
-Example:
+__Example__:
 
 1. On commence par une pile vide: `[]`
 1. On y insert un élement `E1`: `[E1]`
